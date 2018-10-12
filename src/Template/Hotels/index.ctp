@@ -25,7 +25,7 @@ $loguser = $this->request->session()->read('Auth.User');
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('hotel_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Address') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('City') ?></th>
@@ -38,7 +38,15 @@ $loguser = $this->request->session()->read('Auth.User');
         <tbody>
             <?php foreach ($hotels as $hotel): ?>
             <tr>
-                <td><?= $this->Number->format($hotel->hotel_id) ?></td>
+                <?php foreach ($hotel->files as $files): ?>
+                        <td>
+                            <?php
+                            echo $this->Html->image($files->file_path . $files->file_name, [
+                                "alt" => $files->file_name,
+                            ]);
+                            ?>
+                        </td>
+            <?php endforeach; ?>
                 <td><?= h($hotel->hotel_nom) ?></td>
                 <td><?= h($hotel->hotel_adresse) ?></td>
                 <td><?= h($hotel->hotel_ville) ?></td>

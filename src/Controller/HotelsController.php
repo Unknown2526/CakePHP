@@ -27,7 +27,7 @@ class HotelsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Pays']
+            'contain' => ['Users', 'Pays', 'Files']
         ];
         $hotels = $this->paginate($this->Hotels);
 

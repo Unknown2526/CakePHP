@@ -30,7 +30,7 @@ class PaysTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-
+        $this->addBehavior('Translate', ['fields' => ['pays_nom']]);
         $this->setTable('pays');
         $this->setDisplayField('pays_code');
         $this->setPrimaryKey('pays_code');
