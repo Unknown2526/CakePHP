@@ -51,3 +51,8 @@
          "alt" => "diagramme"
     ]);
 ?>
+
+<div class="apropos index large-9 medium-8 columns content">
+    <h6><?= __('Github') ?></h6>
+    <a href="https://github.com/Unknown2526/CakePHP.git">https://github.com/Unknown2526/CakePHP.git</a>
+</div>
