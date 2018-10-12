@@ -1,0 +1,78 @@
+2018-09-21 15:31:00 Error: [PDOException] SQLSTATE[HY000] [1045] Access denied for user 'my_app'@'localhost' (using password: YES) in C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Database\Driver.php on line 93
+Stack Trace:
+#0 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Database\Driver.php(93): PDO->__construct('mysql:host=loca...', 'my_app', 'secret', Array)
+#1 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=loca...', Array)
+#2 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Database\Dialect\MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Database\Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(1034): Cake\Database\Connection->getSchemaCollection()
+#8 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(988): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(1003): Bake\Shell\Task\ModelTask->listAll()
+#10 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\bake\src\Shell\BakeShell.php(252): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Console\Shell.php(518): Bake\Shell\BakeShell->all()
+#12 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Console\CommandRunner.php(342): Cake\Console\Shell->runCommand(Array, true)
+#13 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\vendor\cakephp\cakephp\src\Console\CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#14 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#15 {main}
+
+
+2018-10-10 19:47:38 Error: [PDOException] SQLSTATE[HY000]: General error: 1 near ")": syntax error in C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php on line 291
+Stack Trace:
+#0 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php(291): PDO->prepare('INSERT INTO `cl...')
+#1 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\PdoAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#2 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\TimedOutputAdapter.php(127): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#3 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\TimedOutputAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#4 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(597): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#5 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(569): Phinx\Db\Table->saveData()
+#6 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(627): Phinx\Db\Table->update()
+#7 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\config\Seeds\ClientsSeed.php(25): Phinx\Db\Table->save()
+#8 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Migration\Manager\Environment.php(158): ClientsSeed->run()
+#9 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(416): Phinx\Migration\Manager\Environment->executeSeed(Object(ClientsSeed))
+#10 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(553): Phinx\Migration\Manager->executeSeed('default', Object(ClientsSeed))
+#11 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Console\Command\SeedRun.php(111): Phinx\Migration\Manager->seed('default')
+#12 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\SeedRun->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\migrations\src\Command\Seed.php(72): Migrations\Command\Seed->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\symfony\console\Command\Command.php(251): Migrations\Command\Seed->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\symfony\console\Application.php(886): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\symfony\console\Application.php(262): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Seed), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\symfony\console\Application.php(145): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'seed')
+#20 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#21 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\cakephp\src\Console\CommandRunner.php(342): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#22 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\cakephp\src\Console\CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#23 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#24 {main}
+
+
+2018-10-10 19:51:06 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' in C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php on line 304
+Stack Trace:
+#0 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php(304): PDOStatement->execute(Array)
+#1 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\PdoAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#2 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\TimedOutputAdapter.php(127): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#3 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\TimedOutputAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#4 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(597): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#5 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(569): Phinx\Db\Table->saveData()
+#6 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(627): Phinx\Db\Table->update()
+#7 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\config\Seeds\ClientsSeed.php(47): Phinx\Db\Table->save()
+#8 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Migration\Manager\Environment.php(158): ClientsSeed->run()
+#9 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(416): Phinx\Migration\Manager\Environment->executeSeed(Object(ClientsSeed))
+#10 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(553): Phinx\Migration\Manager->executeSeed('default', Object(ClientsSeed))
+#11 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\robmorgan\phinx\src\Phinx\Console\Command\SeedRun.php(111): Phinx\Migration\Manager->seed('default')
+#12 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\SeedRun->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\migrations\src\Command\Seed.php(72): Migrations\Command\Seed->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\symfony\console\Command\Command.php(251): Migrations\Command\Seed->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\symfony\console\Application.php(886): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\symfony\console\Application.php(262): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Seed), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\symfony\console\Application.php(145): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'seed')
+#20 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#21 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\cakephp\src\Console\CommandRunner.php(342): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#22 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\vendor\cakephp\cakephp\src\Console\CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#23 C:\Program Files (x86)\Ampps\www\CakePHP-3.6.10\CakeHotel - backup\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#24 {main}
+
+
