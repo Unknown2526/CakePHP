@@ -36,7 +36,7 @@ class HotelsTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-
+        $this->addBehavior('Translate', ['fields' => ['hotel_ville']]);
         $this->setTable('hotels');
         $this->setDisplayField('hotel_id');
         $this->setPrimaryKey('hotel_id');

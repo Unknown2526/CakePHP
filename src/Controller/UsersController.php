@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Users Controller
@@ -124,7 +125,7 @@ class UsersController extends AppController
     
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['logout']);
+        $this->Auth->allow(['logout', 'addClient']);
     }
 
     public function logout() {
@@ -148,7 +149,13 @@ class UsersController extends AppController
         if($role === "client"){
             return $action === "chercherInfo";
         }
-
+        
+        if($role === null){
+            if(in_array($action, ['addClient'])) {
+                return true;
+            }
+        }
+        
         return false;
     }
     
@@ -156,10 +163,61 @@ class UsersController extends AppController
         $user = $this->request->session()->read('Auth.User');
 
             
-            $user = $this->Users->find('all', [
+            /**$user = $this->Users->find('all', [
             'conditions' => ['role_id' => $user['role_id']]
             ]);
             $first = $user->first();
+            $this->redirect(['controller' => 'Users', 'action' => 'view', $first['user_id']]);*/
+            
+            
+            if ($user['role_id'] === 'admin') {
+            $admin = $this->Users->find('all', [
+                'conditions' => ['role_id' => $user['role_id']]
+            ]);
+            $first = $admin->first();
             $this->redirect(['controller' => 'Users', 'action' => 'view', $first['user_id']]);
+        }
+
+        if ($user['role_id'] === 'proprietaire') {
+            $proprietaire = $this->Users->find('all', [
+                'conditions' => ['role_id' => $user['role_id']]
+            ]);
+            $first = $proprietaire->first();
+            $this->redirect(['controller' => 'Users', 'action' => 'view', $first['user_id']]);
+        }
+
+        if ($user['role_id'] === 'client') {
+            $client = $this->Users->Clients->find('all', [
+                'conditions' => ['user_id' => $user['user_id']]
+            ]);
+            $first = $client->first();
+            debug($first);
+            $this->redirect(['controller' => 'Clients', 'action' => 'view', $first['client_id']]);
+        }
+        
+    }
+    
+    public function addClient() {
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            $user['role_id'] = 'client';
+            
+            if ($this->Users->save($user)) {
+                
+                $client = TableRegistry::get('Clients');
+                $clientProfil = $client->newEntity();
+                $clientProfil->email = $user['email'];
+                $clientProfil->user_id = $user['user_id'];
+                $client->save($clientProfil);
+                
+                $this->Flash->success(__('The user has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+        $roles = $this->Users->Roles->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'roles'));
     }
 }

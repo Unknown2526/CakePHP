@@ -126,7 +126,7 @@ class ClientsController extends AppController
         }
         
         if($role === "client"){
-            if(in_array($action, ['edit','display', 'view', 'index', 'add', 'delete'])) {
+            if(in_array($action, ['display', 'view', 'index', 'add', 'delete'])) {
                 return false;
             } else {
                 return true;
