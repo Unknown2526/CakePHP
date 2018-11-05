@@ -32,7 +32,7 @@ class VillesTable extends Table
         parent::initialize($config);
 
         $this->setTable('villes');
-        $this->setDisplayField('id');
+        $this->setDisplayField('nom');
         $this->setPrimaryKey('id');
         
         $this->belongsTo('Pays', [

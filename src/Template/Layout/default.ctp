@@ -25,9 +25,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </title>
         <?= $this->Html->meta('icon') ?>
 
-        <?= $this->Html->css('base.css') ?>
-        <?= $this->Html->css('style.css') ?>
-        <?= $this->Html->css('https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css') ?>
+        <?php
+        echo $this->Html->css([
+            'base.css',
+            'style.css',
+            'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
+        ]);
+        ?>
 
         <?= $this->fetch('meta') ?>
         <?= $this->fetch('css') ?>

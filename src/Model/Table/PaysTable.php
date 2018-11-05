@@ -32,7 +32,7 @@ class PaysTable extends Table
         parent::initialize($config);
         $this->addBehavior('Translate', ['fields' => ['pays_nom']]);
         $this->setTable('pays');
-        $this->setDisplayField('pays_code');
+        $this->setDisplayField('pays_nom');
         $this->setPrimaryKey('pays_code');
         
         $this->hasMany('Hotels', [

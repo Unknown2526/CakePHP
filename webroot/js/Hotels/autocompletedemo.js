@@ -2,8 +2,11 @@
     // Get the path to action from CakePHP
     var autoCompleteSource = urlToAutocompleteAction;
     $('#autocomplete').autocomplete({
-        source: autoCompleteSource,        
+        source: autoCompleteSource,
         minLength: 1
     });
+    
+    console.log($result);    
+
 })(jQuery);
 

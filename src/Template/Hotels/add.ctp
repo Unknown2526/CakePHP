@@ -5,16 +5,16 @@ $urlToLinkedListFilter = $this->Url->build([
     "_ext" => "json"
         ]);
 echo $this->Html->scriptBlock('var urlToLinkedListFilter = "' . $urlToLinkedListFilter . '";', ['block' => true]);
-echo $this->Html->script('Hotels/autocomplete', ['block' => 'scriptBottom']);
+echo $this->Html->script('Hotels/add', ['block' => 'scriptBottom']);
 ?>
 <?php
-$urlToHotelsAutocompleteJson = $this->Url->build([
+$urlToHotelsAutocompletedemoJson = $this->Url->build([
     "controller" => "Hotels",
     "action" => "findHotels",
     "_ext" => "json"
         ]);
-echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToHotelsAutocompleteJson . '";', ['block' => true]);
-echo $this->Html->script('Hotels/add', ['block' => 'scriptBottom']);
+echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToHotelsAutocompletedemoJson . '";', ['block' => true]);
+echo $this->Html->script('Hotels/autocompletedemo', ['block' => 'scriptBottom']);
 ?>
 <?php
 /**
@@ -41,7 +41,7 @@ $loguser = $this->request->session()->read('Auth.User');
     <fieldset>
         <legend><?= __('Add Hotel') ?></legend>
         <?php
-            echo $this->Form->control('hotel_nom', ['hotel_id' => 'autocomplete']);
+            echo $this->Form->input('hotel_nom', ['id' => 'autocomplete']);
             echo $this->Form->control('hotel_adresse');
             echo $this->Form->control('hotel_codepostal');
             echo $this->Form->control('hotel_url');

@@ -17,7 +17,7 @@ class HotelsController extends AppController
 
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['add']);
+        $this->Auth->allow(['add', 'findHotels', 'autocompletedemo']);
     }
     
     /**
@@ -84,8 +84,8 @@ class HotelsController extends AppController
         ]);
         
         $users = $this->Hotels->Users->find('list', ['limit' => 200, 'keyField' => 'user_id', 'valueField' => 'email']);
-        $pays = $this->Hotels->Pays->find('list', ['limit' => 200, 'keyField' => 'pays_code', 'valueField' => 'pays_nom']);
-        $villes = $this->Hotels->Pays->Villes->find('list', ['limit' => 200, 'keyField' => 'id', 'valueField' => 'nom']);
+        //$pays = $this->Hotels->Pays->find('list', ['limit' => 200, 'keyField' => 'pays_code', 'valueField' => 'pays_nom']);
+        //$villes = $this->Hotels->Pays->Villes->find('list', ['limit' => 200, 'keyField' => 'id', 'valueField' => 'nom']);
         //$files = $this->Hotels->Files->find('list', ['limit' => 200]);
         $this->set(compact('hotel', 'users', 'pays', 'villes'));
     }
@@ -221,16 +221,16 @@ class HotelsController extends AppController
             $results = $this->Hotels->find('all', array(
                 'conditions' => array('Hotels.hotel_nom LIKE ' => '%' . $name . '%')
             ));
-
+            
             $resultArr = array();
             foreach ($results as $result) {
-                $resultArr[] = array('label' => $result['name'], 'value' => $result['name']);
+                $resultArr[] = array('label' => $result['hotel_nom'], 'value' => $result['hotel_nom']);
             }
             echo json_encode($resultArr);
         }
     }
 
-    public function autocomplete() {
+    public function autocompletedemo() {
         
     }
 }

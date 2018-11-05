@@ -7,18 +7,18 @@ $(document).ready(function () {
                 url: urlToLinkedListFilter,
                 data: 'pays_code=' + paysCode,
                 success: function (villes) {
-                    $select = $('#ville-id');
+                    $select = $('#hotel-ville');
                     $select.find('option').remove();
                     $.each(villes, function (key, value)
                     {
                         $.each(value, function (childKey, childValue) {
-                            $select.append('<option value=' + childValue.id + '>' + childValue.name + '</option>');
+                            $select.append('<option value=' + childValue.id + '>' + childValue.nom + '</option>');
                         });
                     });
                 }
             });
         } else {
-            $('#ville-id').html('<option value="">Select Pays first</option>');
+            $('#hotel-ville').html('<option value="">Select Country first</option>');
         }
     });
 });
