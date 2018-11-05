@@ -47,9 +47,7 @@ class <?= $name ?> extends AbstractMigration
 <?php foreach ($columnsList as $key => $columns): ?>
             ->dropForeignKey(
                 <?= $columns ?>
-
             )<?= ($key === $maxKey) ? '->save();' : '' ?>
-
 <?php endforeach; ?>
 
 <?php endforeach;

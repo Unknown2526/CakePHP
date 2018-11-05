@@ -37,7 +37,7 @@ class Hotel extends Entity
         'hotel_nom' => true,
         'hotel_adresse' => true,
         'hotel_codepostal' => true,
-        'hotel_ville' => true,
+        'ville_id' => true,
         'hotel_url' => true,
         'pays_code' => true,
         'user_id' => true,
@@ -45,6 +45,7 @@ class Hotel extends Entity
         'modified' => true,
         'user' => true,
         'pay' => true,
+        'ville' => true,
         'files' => true
     ];
 }

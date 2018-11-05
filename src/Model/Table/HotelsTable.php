@@ -47,6 +47,10 @@ class HotelsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('List_hotels', [
+            'foreignKey' => 'listHotel_id',
+            'joinType' => 'INNER'
+        ]);
         $this->belongsTo('Pays', [
             'foreignKey' => 'pays_code',
             'joinType' => 'INNER'

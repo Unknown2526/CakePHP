@@ -61,6 +61,8 @@ class HotelsController extends AppController
         $hotel = $this->Hotels->newEntity();
         if ($this->request->is('post')) {
             $hotel = $this->Hotels->patchEntity($hotel, $this->request->getData());
+            debug($hotel);
+            die();
             if ($this->Hotels->save($hotel)) {
                 $this->Flash->success(__('The hotel has been saved.'));
 
@@ -87,7 +89,7 @@ class HotelsController extends AppController
         //$pays = $this->Hotels->Pays->find('list', ['limit' => 200, 'keyField' => 'pays_code', 'valueField' => 'pays_nom']);
         //$villes = $this->Hotels->Pays->Villes->find('list', ['limit' => 200, 'keyField' => 'id', 'valueField' => 'nom']);
         //$files = $this->Hotels->Files->find('list', ['limit' => 200]);
-        $this->set(compact('hotel', 'users', 'pays', 'villes'));
+        $this->set(compact('hotel', 'users', 'pays', 'files', 'villes'));
     }
 
     /**
@@ -218,13 +220,19 @@ class HotelsController extends AppController
 
             $this->autoRender = false;
             $name = $this->request->query['term'];
-            $results = $this->Hotels->find('all', array(
-                'conditions' => array('Hotels.hotel_nom LIKE ' => '%' . $name . '%')
+            
+            $listHotels = TableRegistry::get('list_hotels');
+            $listHotels = $listHotels->find('all', array(
+                'conditions' => array('list_hotels.nom LIKE ' => '%' . $name . '%')
             ));
             
+            /**$results = $this->Hotels->find('all', array(
+                'conditions' => array('Hotels.hotel_nom LIKE ' => '%' . $name . '%')
+            ));*/
+            
             $resultArr = array();
-            foreach ($results as $result) {
-                $resultArr[] = array('label' => $result['hotel_nom'], 'value' => $result['hotel_nom']);
+            foreach ($listHotels as $hotel) {
+                $resultArr[] = array('label' => $hotel['nom'], 'value' => $hotel['hotel_nom']);
             }
             echo json_encode($resultArr);
         }

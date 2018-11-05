@@ -4,9 +4,7 @@
     $('#autocomplete').autocomplete({
         source: autoCompleteSource,
         minLength: 1
-    });
-    
-    console.log($result);    
+    });  
 
 })(jQuery);
 

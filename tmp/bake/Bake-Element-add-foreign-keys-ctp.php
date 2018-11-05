@@ -26,7 +26,6 @@ $hasProcessedConstraint = false;
         if (!empty($statement)): ?>
 
         <?= $statement ?>
-
 <?php unset($statement);
     endif; ?>
             ->addForeignKey(

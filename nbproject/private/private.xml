@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/src/Template/Layout/default.ctp</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/src/Model/Entity/Hotel.php</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/config/app.php</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/src/Template/Files/add.ctp</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/src/Controller/FilesController.php</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/src/Template/Hotels/index.ctp</file>
             <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/src/Controller/HotelsController.php</file>
             <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/src/Template/Hotels/add.ctp</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/CakeHotel/src/Model/Table/HotelsTable.php</file>
         </group>
     </open-files>
 </project-private>
