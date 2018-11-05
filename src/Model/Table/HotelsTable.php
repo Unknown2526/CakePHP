@@ -61,6 +61,9 @@ class HotelsTable extends Table
             'targetForeignKey' => 'file_id',
             'joinTable' => 'hotels_files'
         ]);
+        $this->belongsTo('Villes', [
+            'foreignKey' => 'ville_id'
+        ]);
     }
 
     /**

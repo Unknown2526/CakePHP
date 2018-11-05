@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 12, 2018 at 02:55 AM
+-- Generation Time: Nov 05, 2018 at 02:53 AM
 -- Server version: 5.6.37
 -- PHP Version: 7.1.8
 
@@ -59,15 +59,16 @@ CREATE TABLE IF NOT EXISTS `files` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 = Active, 0 = Inactive'
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `files`
 --
 
 INSERT INTO `files` (`id`, `file_name`, `file_path`, `created`, `modified`, `status`) VALUES
-(1, 'Hello.jpg', 'Files/', '2018-09-24 07:00:00', '2018-09-24 07:10:00', 1),
-(13, 'Tulips.jpg', 'Files/', '2018-10-08 21:47:15', '2018-10-08 21:47:15', 1);
+(1, 'bestwestern.jpg', 'Files/', '2018-09-24 07:00:00', '2018-09-24 07:10:00', 1),
+(13, 'mariott.jpg', 'Files/', '2018-10-08 21:47:15', '2018-10-08 21:47:15', 1),
+(14, 'sheraton.jpg', 'Files/', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -84,17 +85,19 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `hotel_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pays_code` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `ville_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `hotels`
 --
 
-INSERT INTO `hotels` (`hotel_id`, `hotel_nom`, `hotel_adresse`, `hotel_codepostal`, `hotel_ville`, `hotel_url`, `pays_code`, `user_id`, `created`, `modified`) VALUES
-(1, 'Best Western', '3407 Rue Peel', 'H3A 1W7', 'Montréal', 'www.bestwestern.com', 2, 5, '2018-09-21 03:20:37', '2018-09-22 15:45:24'),
-(2, 'best', 'best', 'best', 'best', 'best', 1, 11, '2018-10-09 21:28:40', '2018-10-09 21:28:40');
+INSERT INTO `hotels` (`hotel_id`, `hotel_nom`, `hotel_adresse`, `hotel_codepostal`, `hotel_ville`, `hotel_url`, `pays_code`, `user_id`, `ville_id`, `created`, `modified`) VALUES
+(1, 'Best Western', '3407 Rue Peel', 'H3A 1W7', 'Montréal', 'www.bestwestern.com', 2, 5, NULL, '2018-09-21 03:20:37', '2018-09-22 15:45:24'),
+(2, 'Courtyard by Marriott', '177 Hurricane Ln', 'VT 05495', 'Williston', 'www.marriott.com', 1, 11, NULL, '2018-10-09 21:28:40', '2018-10-09 21:28:40'),
+(3, 'Le Centre Sheraton', '1201 René-Lévesque Blvd W', 'H3B 2L7', 'Montreal', 'https://sheraton.marriott.com/', 2, 11, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `hotels_files` (
   `id` int(11) NOT NULL,
   `hotel_id` int(11) NOT NULL,
   `file_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `hotels_files`
@@ -135,7 +138,35 @@ CREATE TABLE IF NOT EXISTS `hotels_files` (
 
 INSERT INTO `hotels_files` (`id`, `hotel_id`, `file_id`) VALUES
 (1, 1, 1),
-(5, 1, 13);
+(5, 2, 13),
+(6, 3, 14);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `i18n`
+--
+
+CREATE TABLE IF NOT EXISTS `i18n` (
+  `id` int(11) NOT NULL,
+  `locale` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `model` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `foreign_key` int(11) NOT NULL,
+  `field` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `i18n`
+--
+
+INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
+(1, 'fr_CA', 'Pays', 1, 'pays_nom', 'États-Unis'),
+(2, 'ch_HK', 'Pays', 2, 'pays_nom', '加拿大'),
+(3, 'fr_CA', 'Hotels', 1, 'hotel_ville', 'Montréal'),
+(5, 'ch_HK', 'Pays', 1, 'pays_nom', '美國'),
+(6, 'ch_HK', 'Hotels', 1, 'hotel_ville', '滿地可'),
+(8, 'ch_HK', 'Hotels', 3, 'hotel_ville', '威利斯頓');
 
 -- --------------------------------------------------------
 
@@ -200,6 +231,34 @@ INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`, `created`, `modi
 (8, 'anthonychow000@gmail.com', '$2y$10$hW.Nv2Jm2WLpJRMny2/HP.9jvcKwimn33mx8p6bErgWqCBxIg8IqG', 'client', '2018-10-07 20:50:11', '2018-10-07 20:50:11'),
 (11, 'anthonychow8@gmail.com', '$2y$10$dn9/HiQdKDKMhDuiVRSXfu1kmbiirjvZAV1tewM6Jeje780kUTk36', 'proprietaire', '2018-10-09 21:28:14', '2018-10-09 21:28:14');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `villes`
+--
+
+CREATE TABLE IF NOT EXISTS `villes` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pays_code` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `villes`
+--
+
+INSERT INTO `villes` (`id`, `nom`, `pays_code`) VALUES
+(1, 'Toronto', 2),
+(2, 'Montreal', 2),
+(3, 'Ottawa', 2),
+(4, 'Vancouver', 2),
+(5, 'Quebec', 2),
+(6, 'New York', 1),
+(7, 'Chicago', 1),
+(8, 'San Diego', 1),
+(9, 'San Francisco', 1),
+(10, 'Buffalo', 1);
+
 --
 -- Indexes for dumped tables
 --
@@ -223,7 +282,8 @@ ALTER TABLE `files`
 ALTER TABLE `hotels`
   ADD PRIMARY KEY (`hotel_id`),
   ADD KEY `pays_code` (`pays_code`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `ville_id` (`ville_id`);
 
 --
 -- Indexes for table `hotels_clients`
@@ -239,6 +299,12 @@ ALTER TABLE `hotels_files`
   ADD PRIMARY KEY (`id`),
   ADD KEY `file_id` (`file_id`),
   ADD KEY `hotel_id` (`hotel_id`);
+
+--
+-- Indexes for table `i18n`
+--
+ALTER TABLE `i18n`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pays`
@@ -261,6 +327,13 @@ ALTER TABLE `users`
   ADD KEY `role_id_2` (`role_id`);
 
 --
+-- Indexes for table `villes`
+--
+ALTER TABLE `villes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pays_code` (`pays_code`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -273,17 +346,22 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `hotels`
 --
 ALTER TABLE `hotels`
-  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `hotels_files`
 --
 ALTER TABLE `hotels_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `i18n`
+--
+ALTER TABLE `i18n`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `pays`
 --
@@ -294,6 +372,11 @@ ALTER TABLE `pays`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `villes`
+--
+ALTER TABLE `villes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --
@@ -309,7 +392,8 @@ ALTER TABLE `clients`
 --
 ALTER TABLE `hotels`
   ADD CONSTRAINT `hotels_ibfk_3` FOREIGN KEY (`pays_code`) REFERENCES `pays` (`pays_code`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hotels_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hotels_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hotels_ibfk_5` FOREIGN KEY (`ville_id`) REFERENCES `villes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `hotels_clients`
@@ -330,6 +414,12 @@ ALTER TABLE `hotels_files`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `villes`
+--
+ALTER TABLE `villes`
+  ADD CONSTRAINT `villes_ibfk_1` FOREIGN KEY (`pays_code`) REFERENCES `pays` (`pays_code`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

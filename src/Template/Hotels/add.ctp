@@ -1,4 +1,22 @@
 <?php
+$urlToLinkedListFilter = $this->Url->build([
+    "controller" => "Villes",
+    "action" => "getByPays",
+    "_ext" => "json"
+        ]);
+echo $this->Html->scriptBlock('var urlToLinkedListFilter = "' . $urlToLinkedListFilter . '";', ['block' => true]);
+echo $this->Html->script('Hotels/autocomplete', ['block' => 'scriptBottom']);
+?>
+<?php
+$urlToHotelsAutocompleteJson = $this->Url->build([
+    "controller" => "Hotels",
+    "action" => "findHotels",
+    "_ext" => "json"
+        ]);
+echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToHotelsAutocompleteJson . '";', ['block' => true]);
+echo $this->Html->script('Hotels/add', ['block' => 'scriptBottom']);
+?>
+<?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Hotel $hotel
@@ -23,12 +41,12 @@ $loguser = $this->request->session()->read('Auth.User');
     <fieldset>
         <legend><?= __('Add Hotel') ?></legend>
         <?php
-            echo $this->Form->control('hotel_nom');
+            echo $this->Form->control('hotel_nom', ['hotel_id' => 'autocomplete']);
             echo $this->Form->control('hotel_adresse');
             echo $this->Form->control('hotel_codepostal');
-            echo $this->Form->control('hotel_ville');
             echo $this->Form->control('hotel_url');
             echo $this->Form->control('pays_code', ['options' => $pays]);
+            echo $this->Form->control('hotel_ville', ['options' => $villes]);
             echo $this->Form->control('user_id', ['options' => $users]);
             //echo $this->Form->control('files._ids', ['options' => $files]);
             //echo $this->Form->control('file_name', ['type' => 'file']);

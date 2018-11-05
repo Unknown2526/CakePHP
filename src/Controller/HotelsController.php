@@ -17,6 +17,7 @@ class HotelsController extends AppController
 
     public function initialize() {
         parent::initialize();
+        $this->Auth->allow(['add']);
     }
     
     /**
@@ -67,12 +68,26 @@ class HotelsController extends AppController
             }
             $this->Flash->error(__('The hotel could not be saved. Please, try again.')); 
         }
-        //debug($hotel);
-        //die();
+        
+        // Bâtir la liste des Pays  
+        $this->loadModel('Pays');
+        $pays = $this->Pays->find('list', ['limit' => 200]);
+
+        // Extraire le id du premier pays
+        $pays = $pays->toArray();
+        reset($pays);
+        $pays_code = key($pays);
+
+        // Bâtir la liste des villes reliées à ce pays
+        $villes = $this->Pays->Villes->find('list', [
+            'conditions' => ['Villes.pays_code' => $pays_code],
+        ]);
+        
         $users = $this->Hotels->Users->find('list', ['limit' => 200, 'keyField' => 'user_id', 'valueField' => 'email']);
         $pays = $this->Hotels->Pays->find('list', ['limit' => 200, 'keyField' => 'pays_code', 'valueField' => 'pays_nom']);
+        $villes = $this->Hotels->Pays->Villes->find('list', ['limit' => 200, 'keyField' => 'id', 'valueField' => 'nom']);
         //$files = $this->Hotels->Files->find('list', ['limit' => 200]);
-        $this->set(compact('hotel', 'users', 'pays'));
+        $this->set(compact('hotel', 'users', 'pays', 'villes'));
     }
 
     /**
@@ -189,5 +204,33 @@ class HotelsController extends AppController
         //UUID pas fait
         $this->Flash->success(__('Vous avez reservé.'));
         return $this->redirect(['action' => 'index']);
+    }
+    
+    /**
+     * findHotels method
+     * for use with JQuery-UI Autocomplete
+     *
+     * @return JSon query result
+     */
+    public function findHotels() {
+
+        if ($this->request->is('ajax')) {
+
+            $this->autoRender = false;
+            $name = $this->request->query['term'];
+            $results = $this->Hotels->find('all', array(
+                'conditions' => array('Hotels.hotel_nom LIKE ' => '%' . $name . '%')
+            ));
+
+            $resultArr = array();
+            foreach ($results as $result) {
+                $resultArr[] = array('label' => $result['name'], 'value' => $result['name']);
+            }
+            echo json_encode($resultArr);
+        }
+    }
+
+    public function autocomplete() {
+        
     }
 }

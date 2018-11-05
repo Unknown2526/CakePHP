@@ -38,6 +38,9 @@ class PaysTable extends Table
         $this->hasMany('Hotels', [
             'foreignKey' => 'pays_code'
         ]);
+        $this->hasMany('Villes', [
+            'foreignKey' => 'pays_code'
+        ]);
     }
 
     /**
