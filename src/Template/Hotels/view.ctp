@@ -32,7 +32,7 @@ $loguser = $this->request->session()->read('Auth.User');
         </tr>
         <tr>
             <th scope="row"><?= __('City') ?></th>
-            <td><?= h($hotel->hotel_ville) ?></td>
+            <td><?= h($hotel->ville->nom) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Url') ?></th>

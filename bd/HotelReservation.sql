@@ -2,10 +2,10 @@
 -- version 4.4.15.9
 -- https://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Lun 05 Novembre 2018 à 21:28
--- Version du serveur :  5.6.37
--- Version de PHP :  7.1.8
+-- Host: localhost
+-- Generation Time: Nov 05, 2018 at 02:53 AM
+-- Server version: 5.6.37
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `HotelReservation`
+-- Database: `HotelReservation`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `clients`
+-- Table structure for table `clients`
 --
 
 CREATE TABLE IF NOT EXISTS `clients` (
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `clients`
+-- Dumping data for table `clients`
 --
 
 INSERT INTO `clients` (`client_id`, `client_nom`, `client_adresse`, `client_ville`, `client_phone`, `email`, `user_id`, `created`, `modified`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `clients` (`client_id`, `client_nom`, `client_adresse`, `client_vill
 -- --------------------------------------------------------
 
 --
--- Structure de la table `files`
+-- Table structure for table `files`
 --
 
 CREATE TABLE IF NOT EXISTS `files` (
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `files` (
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `files`
+-- Dumping data for table `files`
 --
 
 INSERT INTO `files` (`id`, `file_name`, `file_path`, `created`, `modified`, `status`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `files` (`id`, `file_name`, `file_path`, `created`, `modified`, `sta
 -- --------------------------------------------------------
 
 --
--- Structure de la table `hotels`
+-- Table structure for table `hotels`
 --
 
 CREATE TABLE IF NOT EXISTS `hotels` (
@@ -85,16 +85,16 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `hotel_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pays_code` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `listHotel_id` int(11) DEFAULT NULL,
+  `ville_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `hotels`
+-- Dumping data for table `hotels`
 --
 
-INSERT INTO `hotels` (`hotel_id`, `hotel_nom`, `hotel_adresse`, `hotel_codepostal`, `hotel_ville`, `hotel_url`, `pays_code`, `user_id`, `listHotel_id`, `created`, `modified`) VALUES
+INSERT INTO `hotels` (`hotel_id`, `hotel_nom`, `hotel_adresse`, `hotel_codepostal`, `hotel_ville`, `hotel_url`, `pays_code`, `user_id`, `ville_id`, `created`, `modified`) VALUES
 (1, 'Best Western', '3407 Rue Peel', 'H3A 1W7', 'Montréal', 'www.bestwestern.com', 2, 5, NULL, '2018-09-21 03:20:37', '2018-09-22 15:45:24'),
 (2, 'Courtyard by Marriott', '177 Hurricane Ln', 'VT 05495', 'Williston', 'www.marriott.com', 1, 11, NULL, '2018-10-09 21:28:40', '2018-10-09 21:28:40'),
 (3, 'Le Centre Sheraton', '1201 René-Lévesque Blvd W', 'H3B 2L7', 'Montreal', 'https://sheraton.marriott.com/', 2, 11, NULL, NULL, NULL);
@@ -102,7 +102,7 @@ INSERT INTO `hotels` (`hotel_id`, `hotel_nom`, `hotel_adresse`, `hotel_codeposta
 -- --------------------------------------------------------
 
 --
--- Structure de la table `hotels_clients`
+-- Table structure for table `hotels_clients`
 --
 
 CREATE TABLE IF NOT EXISTS `hotels_clients` (
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `hotels_clients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `hotels_clients`
+-- Dumping data for table `hotels_clients`
 --
 
 INSERT INTO `hotels_clients` (`hotel_id`, `client_id`, `nb_chambre`, `date_de`, `date_a`) VALUES
@@ -123,7 +123,7 @@ INSERT INTO `hotels_clients` (`hotel_id`, `client_id`, `nb_chambre`, `date_de`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `hotels_files`
+-- Table structure for table `hotels_files`
 --
 
 CREATE TABLE IF NOT EXISTS `hotels_files` (
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `hotels_files` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `hotels_files`
+-- Dumping data for table `hotels_files`
 --
 
 INSERT INTO `hotels_files` (`id`, `hotel_id`, `file_id`) VALUES
@@ -144,7 +144,7 @@ INSERT INTO `hotels_files` (`id`, `hotel_id`, `file_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `i18n`
+-- Table structure for table `i18n`
 --
 
 CREATE TABLE IF NOT EXISTS `i18n` (
@@ -154,10 +154,10 @@ CREATE TABLE IF NOT EXISTS `i18n` (
   `foreign_key` int(11) NOT NULL,
   `field` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `i18n`
+-- Dumping data for table `i18n`
 --
 
 INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) VALUES
@@ -171,31 +171,7 @@ INSERT INTO `i18n` (`id`, `locale`, `model`, `foreign_key`, `field`, `content`) 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `list_hotels`
---
-
-CREATE TABLE IF NOT EXISTS `list_hotels` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Contenu de la table `list_hotels`
---
-
-INSERT INTO `list_hotels` (`id`, `nom`) VALUES
-(1, 'First World Hotel'),
-(2, 'Quality Inn & Suites Brossard'),
-(3, 'Holiday Inn Express St. Jean Sur Richelieu'),
-(4, 'Comfort Inn Boucherville'),
-(5, 'Best Western'),
-(6, 'Courtyard by Marriott	'),
-(7, 'Le Centre Sheraton	');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `pays`
+-- Table structure for table `pays`
 --
 
 CREATE TABLE IF NOT EXISTS `pays` (
@@ -205,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `pays` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `pays`
+-- Dumping data for table `pays`
 --
 
 INSERT INTO `pays` (`pays_code`, `pays_devise`, `pays_nom`) VALUES
@@ -215,29 +191,7 @@ INSERT INTO `pays` (`pays_code`, `pays_devise`, `pays_nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `phinxlog`
---
-
-CREATE TABLE IF NOT EXISTS `phinxlog` (
-  `version` bigint(20) NOT NULL,
-  `migration_name` varchar(100) DEFAULT NULL,
-  `start_time` timestamp NULL DEFAULT NULL,
-  `end_time` timestamp NULL DEFAULT NULL,
-  `breakpoint` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `phinxlog`
---
-
-INSERT INTO `phinxlog` (`version`, `migration_name`, `start_time`, `end_time`, `breakpoint`) VALUES
-(20181105162946, 'Initial', '2018-11-05 21:29:46', '2018-11-05 21:29:46', 0),
-(20181105211047, 'Initial', '2018-11-06 02:10:47', '2018-11-06 02:10:47', 0);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -245,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`) VALUES
@@ -256,7 +210,7 @@ INSERT INTO `roles` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -269,7 +223,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`, `created`, `modified`) VALUES
@@ -280,7 +234,7 @@ INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`, `created`, `modi
 -- --------------------------------------------------------
 
 --
--- Structure de la table `villes`
+-- Table structure for table `villes`
 --
 
 CREATE TABLE IF NOT EXISTS `villes` (
@@ -290,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `villes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `villes`
+-- Dumping data for table `villes`
 --
 
 INSERT INTO `villes` (`id`, `nom`, `pays_code`) VALUES
@@ -306,40 +260,40 @@ INSERT INTO `villes` (`id`, `nom`, `pays_code`) VALUES
 (10, 'Buffalo', 1);
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `clients`
+-- Indexes for table `clients`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`client_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Index pour la table `files`
+-- Indexes for table `files`
 --
 ALTER TABLE `files`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `hotels`
+-- Indexes for table `hotels`
 --
 ALTER TABLE `hotels`
   ADD PRIMARY KEY (`hotel_id`),
   ADD KEY `pays_code` (`pays_code`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `listHotel_id` (`listHotel_id`);
+  ADD KEY `ville_id` (`ville_id`);
 
 --
--- Index pour la table `hotels_clients`
+-- Indexes for table `hotels_clients`
 --
 ALTER TABLE `hotels_clients`
   ADD PRIMARY KEY (`hotel_id`,`client_id`),
   ADD KEY `client_id` (`client_id`);
 
 --
--- Index pour la table `hotels_files`
+-- Indexes for table `hotels_files`
 --
 ALTER TABLE `hotels_files`
   ADD PRIMARY KEY (`id`),
@@ -347,37 +301,25 @@ ALTER TABLE `hotels_files`
   ADD KEY `hotel_id` (`hotel_id`);
 
 --
--- Index pour la table `i18n`
+-- Indexes for table `i18n`
 --
 ALTER TABLE `i18n`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `list_hotels`
---
-ALTER TABLE `list_hotels`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `pays`
+-- Indexes for table `pays`
 --
 ALTER TABLE `pays`
   ADD PRIMARY KEY (`pays_code`);
 
 --
--- Index pour la table `phinxlog`
---
-ALTER TABLE `phinxlog`
-  ADD PRIMARY KEY (`version`);
-
---
--- Index pour la table `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
@@ -385,101 +327,96 @@ ALTER TABLE `users`
   ADD KEY `role_id_2` (`role_id`);
 
 --
--- Index pour la table `villes`
+-- Indexes for table `villes`
 --
 ALTER TABLE `villes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pays_code` (`pays_code`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `clients`
+-- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
   MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT pour la table `files`
+-- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT pour la table `hotels`
+-- AUTO_INCREMENT for table `hotels`
 --
 ALTER TABLE `hotels`
   MODIFY `hotel_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT pour la table `hotels_files`
+-- AUTO_INCREMENT for table `hotels_files`
 --
 ALTER TABLE `hotels_files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT pour la table `i18n`
+-- AUTO_INCREMENT for table `i18n`
 --
 ALTER TABLE `i18n`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT pour la table `list_hotels`
---
-ALTER TABLE `list_hotels`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT pour la table `pays`
+-- AUTO_INCREMENT for table `pays`
 --
 ALTER TABLE `pays`
   MODIFY `pays_code` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT pour la table `villes`
+-- AUTO_INCREMENT for table `villes`
 --
 ALTER TABLE `villes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `clients`
+-- Constraints for table `clients`
 --
 ALTER TABLE `clients`
   ADD CONSTRAINT `clients_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `hotels`
+-- Constraints for table `hotels`
 --
 ALTER TABLE `hotels`
   ADD CONSTRAINT `hotels_ibfk_3` FOREIGN KEY (`pays_code`) REFERENCES `pays` (`pays_code`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hotels_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hotels_ibfk_5` FOREIGN KEY (`listHotel_id`) REFERENCES `list_hotels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hotels_ibfk_5` FOREIGN KEY (`ville_id`) REFERENCES `villes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `hotels_clients`
+-- Constraints for table `hotels_clients`
 --
 ALTER TABLE `hotels_clients`
   ADD CONSTRAINT `hotels_clients_ibfk_1` FOREIGN KEY (`hotel_id`) REFERENCES `hotels` (`hotel_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hotels_clients_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `clients` (`client_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `hotels_files`
+-- Constraints for table `hotels_files`
 --
 ALTER TABLE `hotels_files`
   ADD CONSTRAINT `hotels_files_ibfk_1` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `hotels_files_ibfk_2` FOREIGN KEY (`hotel_id`) REFERENCES `hotels` (`hotel_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `villes`
+-- Constraints for table `villes`
 --
 ALTER TABLE `villes`
   ADD CONSTRAINT `villes_ibfk_1` FOREIGN KEY (`pays_code`) REFERENCES `pays` (`pays_code`) ON DELETE CASCADE ON UPDATE CASCADE;

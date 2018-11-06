@@ -7,7 +7,7 @@ $(document).ready(function () {
                 url: urlToLinkedListFilter,
                 data: 'pays_code=' + paysCode,
                 success: function (villes) {
-                    $select = $('#hotel-ville');
+                    $select = $('#ville-id');
                     $select.find('option').remove();
                     $.each(villes, function (key, value)
                     {
@@ -18,7 +18,7 @@ $(document).ready(function () {
                 }
             });
         } else {
-            $('#hotel-ville').html('<option value="">Select Country first</option>');
+            $('#ville-id').html('<option value="">Select Country first</option>');
         }
     });
 });

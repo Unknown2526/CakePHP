@@ -10413,3 +10413,324 @@ Stack Trace:
 #18 {main}
 
 
+2018-11-06 02:22:03 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hotelreservation.list_hotels' doesn't exist
+Request URL: /hotels/find-hotels.json?term=a
+Referer URL: http://localhost/CakeHotel/hotels/add
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'list_hotels', Array, Object(Cake\Database\Schema\TableSchema))
+#1 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('list_hotels', Array)
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(548): Cake\Database\Schema\CachedCollection->describe('list_hotels')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(271): Cake\ORM\Table->getSchema()
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\ListHotelsTable))
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1758): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\ListHotelsTable))
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1350): Cake\ORM\Table->query()
+#7 E:\Program Files\Ampps\www\CakeHotel\src\Controller\HotelsController.php(226): Cake\ORM\Table->find('all', Array)
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\HotelsController->findHotels()
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(97): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#23 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#26 {main}
+
+
+2018-11-06 02:25:43 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hotelreservation.list_hotels' doesn't exist
+Request URL: /hotels/find-hotels.json?term=a
+Referer URL: http://localhost/CakeHotel/hotels/add
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'list_hotels', Array, Object(Cake\Database\Schema\TableSchema))
+#1 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('list_hotels', Array)
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(548): Cake\Database\Schema\CachedCollection->describe('list_hotels')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(271): Cake\ORM\Table->getSchema()
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\ListHotelsTable))
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1758): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\ListHotelsTable))
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1350): Cake\ORM\Table->query()
+#7 E:\Program Files\Ampps\www\CakeHotel\src\Controller\HotelsController.php(226): Cake\ORM\Table->find('all', Array)
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\HotelsController->findHotels()
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(97): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#23 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#26 {main}
+
+
+2018-11-06 02:25:46 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hotelreservation.list_hotels' doesn't exist
+Request URL: /hotels/find-hotels.json?term=a
+Referer URL: http://localhost/CakeHotel/hotels/add
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'list_hotels', Array, Object(Cake\Database\Schema\TableSchema))
+#1 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('list_hotels', Array)
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(548): Cake\Database\Schema\CachedCollection->describe('list_hotels')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(271): Cake\ORM\Table->getSchema()
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\ListHotelsTable))
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1758): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\ListHotelsTable))
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1350): Cake\ORM\Table->query()
+#7 E:\Program Files\Ampps\www\CakeHotel\src\Controller\HotelsController.php(226): Cake\ORM\Table->find('all', Array)
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\HotelsController->findHotels()
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(97): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#23 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#26 {main}
+
+
+2018-11-06 02:26:37 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hotelreservation.list_hotels' doesn't exist
+Request URL: /hotels/find-hotels.json?term=a
+Referer URL: http://localhost/CakeHotel/hotels/add
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'list_hotels', Array, Object(Cake\Database\Schema\TableSchema))
+#1 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('list_hotels', Array)
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(548): Cake\Database\Schema\CachedCollection->describe('list_hotels')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(271): Cake\ORM\Table->getSchema()
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\ListHotelsTable))
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1758): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\ListHotelsTable))
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1350): Cake\ORM\Table->query()
+#7 E:\Program Files\Ampps\www\CakeHotel\src\Controller\HotelsController.php(226): Cake\ORM\Table->find('all', Array)
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\HotelsController->findHotels()
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(97): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#23 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#26 {main}
+
+
+2018-11-06 02:32:51 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hotelreservation.list_hotels' doesn't exist
+Request URL: /hotels/find-hotels.json?term=a
+Referer URL: http://localhost/CakeHotel/hotels/add
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'list_hotels', Array, Object(Cake\Database\Schema\TableSchema))
+#1 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('list_hotels', Array)
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(548): Cake\Database\Schema\CachedCollection->describe('list_hotels')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(271): Cake\ORM\Table->getSchema()
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\ListHotelsTable))
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1758): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\ListHotelsTable))
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1350): Cake\ORM\Table->query()
+#7 E:\Program Files\Ampps\www\CakeHotel\src\Controller\HotelsController.php(226): Cake\ORM\Table->find('all', Array)
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\HotelsController->findHotels()
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(97): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#23 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#26 {main}
+
+
+2018-11-06 02:45:01 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hotelreservation.list_hotels' doesn't exist
+Request URL: /hotels/find-hotels.json?term=a
+Referer URL: http://localhost/CakeHotel/hotels/add
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'list_hotels', Array, Object(Cake\Database\Schema\TableSchema))
+#1 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('list_hotels', Array)
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(548): Cake\Database\Schema\CachedCollection->describe('list_hotels')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(271): Cake\ORM\Table->getSchema()
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\ListHotelsTable))
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1758): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\ListHotelsTable))
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1350): Cake\ORM\Table->query()
+#7 E:\Program Files\Ampps\www\CakeHotel\src\Controller\HotelsController.php(226): Cake\ORM\Table->find('all', Array)
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\HotelsController->findHotels()
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(97): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#23 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#26 {main}
+
+
+2018-11-06 02:50:11 Error: [InvalidArgumentException] Cannot get an empty property
+Request URL: /
+Referer URL: http://localhost/CakeHotel/
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Datasource\EntityTrait.php(135): Cake\ORM\Entity->get('')
+#1 E:\Program Files\Ampps\www\CakeHotel\src\Template\Hotels\index.ctp(52): Cake\ORM\Entity->__get('')
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(1240): include('E:\\Program File...')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(1201): Cake\View\View->_evaluate('E:\\Program File...', Array)
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(803): Cake\View\View->_render('E:\\Program File...')
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(777): Cake\View\View->render(NULL, NULL)
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(126): Cake\Controller\Controller->render()
+#7 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#23 {main}
+
+
+2018-11-06 02:50:15 Error: [InvalidArgumentException] Cannot get an empty property
+Request URL: /
+Referer URL: http://localhost/CakeHotel/hotels/edit/6
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Datasource\EntityTrait.php(135): Cake\ORM\Entity->get('')
+#1 E:\Program Files\Ampps\www\CakeHotel\src\Template\Hotels\index.ctp(52): Cake\ORM\Entity->__get('')
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(1240): include('E:\\Program File...')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(1201): Cake\View\View->_evaluate('E:\\Program File...', Array)
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(803): Cake\View\View->_render('E:\\Program File...')
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(777): Cake\View\View->render(NULL, NULL)
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(126): Cake\Controller\Controller->render()
+#7 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#23 {main}
+
+
+2018-11-06 02:50:17 Error: [InvalidArgumentException] Cannot get an empty property
+Request URL: /
+Referer URL: http://localhost/CakeHotel/hotels/edit/6
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Datasource\EntityTrait.php(135): Cake\ORM\Entity->get('')
+#1 E:\Program Files\Ampps\www\CakeHotel\src\Template\Hotels\index.ctp(52): Cake\ORM\Entity->__get('')
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(1240): include('E:\\Program File...')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(1201): Cake\View\View->_evaluate('E:\\Program File...', Array)
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\View\View.php(803): Cake\View\View->_render('E:\\Program File...')
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(777): Cake\View\View->render(NULL, NULL)
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(126): Cake\Controller\Controller->render()
+#7 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#23 {main}
+
+
+2018-11-06 02:54:38 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hotelreservation.list_hotels' doesn't exist
+Request URL: /hotels/find-hotels.json?term=a
+Referer URL: http://localhost/CakeHotel/hotels/add
+Stack Trace:
+#0 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'list_hotels', Array, Object(Cake\Database\Schema\TableSchema))
+#1 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('list_hotels', Array)
+#2 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(548): Cake\Database\Schema\CachedCollection->describe('list_hotels')
+#3 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(271): Cake\ORM\Table->getSchema()
+#4 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\ListHotelsTable))
+#5 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1758): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\ListHotelsTable))
+#6 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\ORM\Table.php(1350): Cake\ORM\Table->query()
+#7 E:\Program Files\Ampps\www\CakeHotel\src\Controller\HotelsController.php(224): Cake\ORM\Table->find('all', Array)
+#8 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\HotelsController->findHotels()
+#9 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#10 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\HotelsController))
+#11 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#12 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#13 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#14 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#15 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#16 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#17 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(97): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#19 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#20 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#21 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#23 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 E:\Program Files\Ampps\www\CakeHotel\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 E:\Program Files\Ampps\www\CakeHotel\webroot\index.php(40): Cake\Http\Server->run()
+#26 {main}
+
+

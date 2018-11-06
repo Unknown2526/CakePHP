@@ -28,7 +28,7 @@ class HotelsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Pays', 'Files']
+            'contain' => ['Users', 'Pays', 'Files', 'Villes']
         ];
         $hotels = $this->paginate($this->Hotels);
 
@@ -45,7 +45,7 @@ class HotelsController extends AppController
     public function view($id = null)
     {
         $hotel = $this->Hotels->get($id, [
-            'contain' => ['Users', 'Pays', 'Files']
+            'contain' => ['Users', 'Pays', 'Files', 'Villes']
         ]);
 
         $this->set('hotel', $hotel);
@@ -61,8 +61,6 @@ class HotelsController extends AppController
         $hotel = $this->Hotels->newEntity();
         if ($this->request->is('post')) {
             $hotel = $this->Hotels->patchEntity($hotel, $this->request->getData());
-            debug($hotel);
-            die();
             if ($this->Hotels->save($hotel)) {
                 $this->Flash->success(__('The hotel has been saved.'));
 
@@ -117,7 +115,8 @@ class HotelsController extends AppController
         $users = $this->Hotels->Users->find('list', ['limit' => 200]);
         $pays = $this->Hotels->Pays->find('list', ['limit' => 200, 'keyField' => 'pays_code', 'valueField' => 'pays_nom']);
         $files = $this->Hotels->Files->find('list', ['limit' => 200]);
-        $this->set(compact('hotel', 'users', 'pays', 'files'));
+        $villes = $this->Hotels->Villes->find('list', ['limit' => 200]);
+        $this->set(compact('hotel', 'users', 'pays', 'files', 'villes'));
     }
 
     /**

@@ -49,7 +49,7 @@ $loguser = $this->request->session()->read('Auth.User');
             <?php endforeach; ?>
                 <td><?= h($hotel->hotel_nom) ?></td>
                 <td><?= h($hotel->hotel_adresse) ?></td>
-                <td><?= h($hotel->hotel_ville) ?></td>
+                <td><?= h($hotel->ville->nom) ?></td>
                 <td><?= h($hotel->hotel_url) ?></td>
                 <td><?= h($hotel->created) ?></td>
                 <td><?= h($hotel->modified) ?></td>

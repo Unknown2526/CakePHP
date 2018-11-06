@@ -1,4 +1,13 @@
 <?php
+$urlToLinkedListFilter = $this->Url->build([
+    "controller" => "Villes",
+    "action" => "getByPays",
+    "_ext" => "json"
+        ]);
+echo $this->Html->scriptBlock('var urlToLinkedListFilter = "' . $urlToLinkedListFilter . '";', ['block' => true]);
+echo $this->Html->script('Hotels/add', ['block' => 'scriptBottom']);
+?>
+<?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Hotel $hotel
@@ -24,9 +33,9 @@
             echo $this->Form->control('hotel_nom');
             echo $this->Form->control('hotel_adresse');
             echo $this->Form->control('hotel_codepostal');
-            echo $this->Form->control('hotel_ville');
             echo $this->Form->control('hotel_url');
-            echo $this->Form->control('hotel_pays', ['options' => $pays]);
+            echo $this->Form->control('pays_code', ['options' => $pays]);
+            echo $this->Form->control('ville_id', ['options' => $villes]);
             //echo $this->Form->control('user_id', ['options' => $users]);
             echo $this->Form->hidden('user_id');
             echo $this->Form->control('files._ids', ['options' => $files]);

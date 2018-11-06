@@ -100,11 +100,11 @@ class HotelsTable extends Table
             ->requirePresence('hotel_codepostal', 'create')
             ->notEmpty('hotel_codepostal');
 
-        $validator
+        /**$validator
             ->scalar('hotel_ville')
             ->maxLength('hotel_ville', 255)
             ->requirePresence('hotel_ville', 'create')
-            ->notEmpty('hotel_ville');
+            ->notEmpty('hotel_ville');*/
 
         $validator
             ->scalar('hotel_url')
@@ -116,6 +116,11 @@ class HotelsTable extends Table
             ->integer('pays_code')
             ->requirePresence('pays_code', 'create')
             ->notEmpty('pays_code');
+        
+        $validator
+            ->integer('ville_id')
+            ->requirePresence('ville_id', 'create')
+            ->notEmpty('ville_id');
 
         return $validator;
     }
