@@ -6,8 +6,7 @@ $urlToLinkedListFilter = $this->Url->build([
         ]);
 echo $this->Html->scriptBlock('var urlToLinkedListFilter = "' . $urlToLinkedListFilter . '";', ['block' => true]);
 echo $this->Html->script('Hotels/add', ['block' => 'scriptBottom']);
-?>
-<?php
+
 $urlToHotelsAutocompletedemoJson = $this->Url->build([
     "controller" => "Hotels",
     "action" => "findHotels",

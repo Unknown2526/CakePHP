@@ -6,6 +6,14 @@ $urlToLinkedListFilter = $this->Url->build([
         ]);
 echo $this->Html->scriptBlock('var urlToLinkedListFilter = "' . $urlToLinkedListFilter . '";', ['block' => true]);
 echo $this->Html->script('Hotels/add', ['block' => 'scriptBottom']);
+
+$urlToHotelsAutocompletedemoJson = $this->Url->build([
+    "controller" => "Hotels",
+    "action" => "findHotels",
+    "_ext" => "json"
+        ]);
+echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToHotelsAutocompletedemoJson . '";', ['block' => true]);
+echo $this->Html->script('Hotels/autocompletedemo', ['block' => 'scriptBottom']);
 ?>
 <?php
 /**
@@ -30,7 +38,7 @@ echo $this->Html->script('Hotels/add', ['block' => 'scriptBottom']);
     <fieldset>
         <legend><?= __('Edit Hotel') ?></legend>
         <?php
-            echo $this->Form->control('hotel_nom');
+            echo $this->Form->control('hotel_nom', ['id' => 'autocomplete']);
             echo $this->Form->control('hotel_adresse');
             echo $this->Form->control('hotel_codepostal');
             echo $this->Form->control('hotel_url');
