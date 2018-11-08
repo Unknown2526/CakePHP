@@ -138,4 +138,12 @@ class HotelsTable extends Table
 
         return $rules;
     }
+    
+    public function findPays(Query $query, array $options)
+    {
+        $query->where([
+            $this->alias(). '.pays_code' => 1
+            ]);
+        return $query;
+    }
 }

@@ -48,11 +48,11 @@ class UsersFixture extends TestFixture
         $this->records = [
             [
                 'user_id' => 1,
-                'email' => 'Lorem ipsum dolor sit amet',
+                'email' => 'anthonychow@gmail.com',
                 'password' => 'Lorem ipsum dolor sit amet',
                 'role_id' => 'Lorem ipsum dolor sit amet',
-                'created' => '2018-10-04 16:54:57',
-                'modified' => '2018-10-04 16:54:57'
+                'created' => null,
+                'modified' => null
             ],
         ];
         parent::init();

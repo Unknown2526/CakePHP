@@ -18,7 +18,7 @@ class ClientsControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.clients',
         'app.hotels',
-        'app.hotels_clients'
+        //'app.hotels_clients'
     ];
 
     /**

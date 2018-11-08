@@ -3,6 +3,7 @@ namespace App\Test\TestCase\Controller;
 
 use App\Controller\HotelsController;
 use Cake\TestSuite\IntegrationTestCase;
+use Cake\ORM\TableRegistry;
 
 /**
  * App\Controller\HotelsController Test Case
@@ -20,7 +21,9 @@ class HotelsControllerTest extends IntegrationTestCase
         'app.users',
         'app.pays',
         'app.files',
-        'app.hotels_files'
+        'app.hotels_files',
+        'app.villes',
+        'core.translates'
     ];
 
     /**
@@ -30,7 +33,8 @@ class HotelsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/');
+        $this->assertResponseOk();
     }
 
     /**
@@ -40,7 +44,8 @@ class HotelsControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/hotels/view/1');
+        $this->assertResponseOk();
     }
 
     /**
@@ -50,7 +55,38 @@ class HotelsControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'user_id' => 1,
+                    'email' => 'anthonychow@gmail.com',
+                    'password' => 'Lorem ipsum dolor sit amet',
+                    'role_id' => 'admin',
+                    'created' => null,
+                    'modified' => null
+                ]
+            ]
+        ]);
+        $this->get('/hotels/add');
+
+        $this->assertResponseOk();
+        
+        $data = [
+                'hotel_id' => 1,
+                'hotel_nom' => 'Lorem ipsum dolor sit amet',
+                'hotel_adresse' => 'Lorem ipsum dolor sit amet',
+                'hotel_codepostal' => 'Lorem ipsum dolor sit amet',
+                'hotel_url' => 'Lorem ipsum dolor sit amet',
+                'pays_code' => 1,
+                'ville_id' => 1,
+                'user_id' => 1,
+                'listHotels_id' => 1,
+                'created' => null,
+                'modified' => null
+        ];
+        $this->post('/hotels/add', $data);
+        $this->assertResponseSuccess();
+        $this->assertResponseContains('The hotel has been saved.');
     }
 
     /**
@@ -60,7 +96,54 @@ class HotelsControllerTest extends IntegrationTestCase
      */
     public function testEdit()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'user_id' => 1,
+                    'email' => 'anthonychow@gmail.com',
+                    'password' => 'Lorem ipsum dolor sit amet',
+                    'role_id' => 'admin',
+                    'created' => null,
+                    'modified' => null
+                ]
+            ]
+        ]);
+        $this->get('/hotels/edit/1');
+
+        $this->assertResponseOk();
+        
+        $data = [
+                'hotel_id' => 1,
+                'hotel_nom' => 'blabla',
+                'hotel_adresse' => 'Lorem ipsum dolor sit amet',
+                'hotel_codepostal' => 'Lorem ipsum dolor sit amet',
+                'hotel_url' => 'Lorem ipsum dolor sit amet',
+                'pays_code' => 1,
+                'ville_id' => 1,
+                'user_id' => 1,
+                'listHotels_id' => 1,
+                'created' => null,
+                'modified' => null
+        ];
+        $this->post('/hotels/edit/1', $data);
+        $this->assertResponseSuccess();
+        
+        $expected = [
+                'hotel_id' => 1,
+                'hotel_nom' => 'blabla',
+                'hotel_adresse' => 'Lorem ipsum dolor sit amet',
+                'hotel_codepostal' => 'Lorem ipsum dolor sit amet',
+                'hotel_url' => 'Lorem ipsum dolor sit amet',
+                'pays_code' => 1,
+                'ville_id' => 1,
+                'user_id' => 1,
+                'listHotels_id' => 1,
+                'created' => null,
+                'modified' => null
+        ];
+        
+        $this->assertEquals($expected, $data);
+        
     }
 
     /**
@@ -70,6 +153,53 @@ class HotelsControllerTest extends IntegrationTestCase
      */
     public function testDelete()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'user_id' => 1,
+                    'email' => 'anthonychow@gmail.com',
+                    'password' => 'Lorem ipsum dolor sit amet',
+                    'role_id' => 'admin',
+                    'created' => null,
+                    'modified' => null
+                ]
+            ]
+        ]);
+        
+        $this->delete('/hotels/delete/1');
+        $this->assertResponseSuccess();
+        
+        $hotels = TableRegistry::get('Hotels');
+        $query = $hotels->find('all');
+        $result = $query->hydrate(false)->toArray();
+        $count = count($result);
+        $this->assertEquals(0, $count);
+    }
+    
+    public function testAddAuthenticated()
+    {
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'user_id' => 1,
+                    'email' => 'anthonychow@gmail.com',
+                    'password' => 'Lorem ipsum dolor sit amet',
+                    'role_id' => 'admin',
+                    'created' => null,
+                    'modified' => null
+                ]
+            ]
+        ]);
+        
+        $this->get('/hotels/add');
+
+        $this->assertResponseOk();
+    }
+    
+    public function testAddUnauthenticatedFails()
+    {
+        $this->get('/hotels/add');
+
+        $this->assertRedirect(['controller' => 'Users', 'action' => 'login']);
     }
 }

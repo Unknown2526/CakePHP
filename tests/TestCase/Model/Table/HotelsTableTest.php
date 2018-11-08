@@ -71,7 +71,20 @@ class HotelsTableTest extends TestCase
      */
     public function testValidationDefault()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $data = ['hotel_id' => 1,
+                'hotel_nom' => '',
+                'hotel_adresse' => 'Lorem ipsum dolor sit amet',
+                'hotel_codepostal' => 'Lorem ipsum dolor sit amet',
+                'hotel_url' => 'Lorem ipsum dolor sit amet',
+                'pays_code' => 1,
+                'ville_id' => 1,
+                'user_id' => 1,
+                'listHotels_id' => 1,
+                'created' => null,
+                'modified' => null];
+        
+        $hotel = $this->Hotels->newEntity($data);
+        $this->assertNotEmpty($hotel->errors());
     }
 
     /**
@@ -82,5 +95,27 @@ class HotelsTableTest extends TestCase
     public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
+    }
+    
+    public function testFindPays()
+    {
+        $query = $this->Hotels->find('pays');
+        $this->assertInstanceOf('Cake\ORM\Query', $query);
+        $result = $query->hydrate(false)->toArray();
+
+        $expected = [
+            ['hotel_id' => 1,
+                'hotel_nom' => 'Lorem ipsum dolor sit amet',
+                'hotel_adresse' => 'Lorem ipsum dolor sit amet',
+                'hotel_codepostal' => 'Lorem ipsum dolor sit amet',
+                'hotel_url' => 'Lorem ipsum dolor sit amet',
+                'pays_code' => 1,
+                'ville_id' => 1,
+                'user_id' => 1,
+                'listHotels_id' => 1,
+                'created' => null,
+                'modified' => null]
+        ];
+        $this->assertEquals($expected, $result);
     }
 }
