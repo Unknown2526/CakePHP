@@ -32,7 +32,7 @@ $this->end();
             echo $this->Form->control('user_id', ['options' => $users]);
             echo $this->Form->control('file_name', ['type' => 'file']);
         ?>
-    </fieldset>
+</fieldset>
 <?= $this->Form->button(__("Add")); ?>
 <?= $this->Form->end() ?>
 

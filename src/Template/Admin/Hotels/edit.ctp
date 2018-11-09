@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Hotel $hotel
  */
+$this->extend('/Layout/TwitterBootstrap/dashboard');
+$this->start('tb_actions');
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -48,3 +50,49 @@
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+
+<li><?=
+    $this->Form->postLink(
+        __('Delete'),
+        ['action' => 'delete', $hotel->hotel_id],
+        ['confirm' => __('Are you sure you want to delete # {0}?', $hotel->hotel_id)]
+    )
+    ?>
+    </li>
+    <li><?= $this->Html->link(__('List Hotels'), ['action' => 'index']) ?></li>
+<?php
+$this->end();
+
+$this->start('tb_sidebar');
+?>
+<ul class="nav nav-sidebar">
+    <li><?=
+    $this->Form->postLink(
+        __('Delete'),
+        ['action' => 'delete', $hotel->hotel_id],
+        ['confirm' => __('Are you sure you want to delete # {0}?', $hotel->hotel_id)]
+    )
+    ?>
+    </li>
+    <li><?= $this->Html->link(__('List Hotels'), ['action' => 'index']) ?></li>
+</ul>
+<?php
+$this->end();
+?>
+<?= $this->Form->create($hotel); ?>
+<fieldset>
+        <legend><?= __('Add Hotel') ?></legend>
+        <?php
+            
+            echo $this->Form->input('hotel_nom', ['id' => 'autocomplete']);
+            echo $this->Form->control('hotel_adresse');
+            echo $this->Form->control('hotel_codepostal');
+            echo $this->Form->control('hotel_url');
+            echo $this->Form->control('pays_code', ['options' => $pays]);
+            echo $this->Form->control('ville_id', ['options' => $villes]);
+            echo $this->Form->control('user_id', ['options' => $users]);
+            echo $this->Form->control('file_name', ['type' => 'file']);
+        ?>
+    </fieldset>
+<?= $this->Form->button(__("Save")); ?>
+<?= $this->Form->end() ?>
