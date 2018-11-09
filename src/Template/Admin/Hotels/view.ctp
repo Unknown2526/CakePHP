@@ -58,15 +58,15 @@ $this->end();
         </tr>
         <tr>
             <th><?= __('City') ?></th>
-            <td><?= $hotel->has('ville') ? $this->Html->link($hotel->ville->nom, ['controller' => 'Villes', 'action' => 'view', $hotel->ville->id]) : '' ?></td>
+            <td><?= h($hotel->ville->nom) ?></td>
         </tr>
         <tr>
             <th><?= __('Country') ?></th>
-            <td><?= $hotel->has('pay') ? $this->Html->link($hotel->pay->pays_nom, ['controller' => 'Pays', 'action' => 'view', $hotel->pay->pays_code]) : '' ?></td>
+            <td><?= $hotel->has('pay') ? $hotel->pay->pays_nom : '' ?></td>
         </tr>
         <tr>
             <th><?= __('User') ?></th>
-            <td><?= $hotel->has('user') ? $this->Html->link($hotel->user->email, ['controller' => 'Users', 'action' => 'view', $hotel->user->user_id]) : '' ?></td>
+            <td><?= $hotel->has('user') ? $hotel->user->email : '' ?></td>
         </tr>
         <tr>
             <th><?= __('Created') ?></th>

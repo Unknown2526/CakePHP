@@ -72,6 +72,10 @@ class HotelsController extends AppController {
         $hotel = $this->Hotels->newEntity();
         if ($this->request->is('post')) {
             $hotel = $this->Hotels->patchEntity($hotel, $this->request->getData());
+            
+            $loguser = $this->request->session()->read('Auth.User');
+            $hotel->user_id = $loguser['user_id'];
+            
             if ($this->Hotels->save($hotel)) {
                 $this->Flash->success(__('The hotel has been saved.'));
 
@@ -116,6 +120,7 @@ class HotelsController extends AppController {
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $hotel = $this->Hotels->patchEntity($hotel, $this->request->getData());
+            
             if ($this->Hotels->save($hotel)) {
                 $this->Flash->success(__('The hotel has been saved.'));
 

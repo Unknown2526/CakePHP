@@ -29,8 +29,7 @@ $this->end();
             echo $this->Form->control('hotel_url');
             echo $this->Form->control('pays_code', ['options' => $pays]);
             echo $this->Form->control('ville_id', ['options' => $villes]);
-            echo $this->Form->control('user_id', ['options' => $users]);
-            echo $this->Form->control('file_name', ['type' => 'file']);
+            //echo $this->Form->control('user_id', ['options' => $users]);
         ?>
 </fieldset>
 <?= $this->Form->button(__("Add")); ?>

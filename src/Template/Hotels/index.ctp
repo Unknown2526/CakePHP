@@ -56,6 +56,7 @@ $loguser = $this->request->session()->read('Auth.User');
                 <td><?= h($hotel->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $hotel->hotel_id]) ?>
+                    <?= $this->Html->link('(pdf)', ['action' => 'view', $hotel->hotel_id . '.pdf']) ?>
                     <?php if ($userrole === "admin" || $userrole === "proprietaire"): ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $hotel->hotel_id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $hotel->hotel_id], ['confirm' => __('Are you sure you want to delete # {0}?', $hotel->hotel_id)]) ?>
