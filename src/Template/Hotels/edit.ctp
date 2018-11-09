@@ -1,4 +1,5 @@
 <?php
+$this->extend('/Layout/default');
 $urlToLinkedListFilter = $this->Url->build([
     "controller" => "Villes",
     "action" => "getByPays",

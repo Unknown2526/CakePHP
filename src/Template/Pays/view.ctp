@@ -1,4 +1,5 @@
 <?php
+$this->extend('/Layout/default');
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Pay $pay

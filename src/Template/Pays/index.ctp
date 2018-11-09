@@ -1,4 +1,5 @@
 <?php
+$this->extend('/Layout/default');
 $urlToRestApi = $this->Url->build('/api/pays', true);
 echo $this->Html->scriptBlock('var urlToRestApi = "' . $urlToRestApi . '";', ['block' => true]);
 echo $this->Html->script('Pays/index', ['block' => 'scriptBottom']);

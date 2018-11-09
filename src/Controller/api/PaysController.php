@@ -17,5 +17,12 @@ class PaysController extends AppController {
             'pays_code', 'pays_devise', 'pays_nom'
         ]
     ];
+    
+    public function beforeFilter(\Cake\Event\Event $event) {
+        parent::beforefilter($event);
+        if($this->request->param('action') === 'add') {
+            $this->eventManager()->off($this->Csrf);
+        }
+    }
 
 }

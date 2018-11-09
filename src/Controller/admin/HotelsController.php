@@ -28,7 +28,7 @@ class HotelsController extends AppController {
     public function initialize() {
         parent::initialize();
         // Use the Bootstrap layout from the plugin.
-        // $this->viewBuilder()->setLayout('admin');
+        //$this->viewBuilder()->setLayout('admin');
     }
 
     /**
@@ -37,6 +37,9 @@ class HotelsController extends AppController {
      * @return \Cake\Http\Response|void
      */
     public function index() {
+        $this->paginate = [
+            'contain' => ['Users', 'Pays', 'Files', 'Villes']
+        ];
         $hotels = $this->paginate($this->Hotels);
 
         $this->set(compact('hotels'));

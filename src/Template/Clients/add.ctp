@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Client $client
  */
+$this->extend('/Layout/default');
 $loguser = $this->request->session()->read('Auth.User');
  $userrole = $loguser['role_id'];
 ?>

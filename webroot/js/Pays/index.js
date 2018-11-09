@@ -62,6 +62,9 @@ function paysAction(type, id) {
     }
     $.ajax({
         type: requestType,
+        headers: {
+            'X-CSRF-Token': $('[name="_csrfToken"]').val()
+        },
         url: ajaxUrl,
         dataType: "json",
         contentType: "application/json; charset=utf-8",
