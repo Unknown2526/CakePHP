@@ -55,4 +55,8 @@
 <div class="apropos index large-9 medium-8 columns content">
     <h6><?= __('Github') ?></h6>
     <a href="https://github.com/Unknown2526/CakePHP.git">https://github.com/Unknown2526/CakePHP.git</a>
+    <br><br>
+    <h6><?= __('Coverage') ?></h6>
+    <a href="coverage/Controller/HotelsController.php.html">Test pour HotelsController</a>
+    <a href="coverage/Model/Table/HotelsTable.php.html">Test pour HotelsController</a>
 </div>

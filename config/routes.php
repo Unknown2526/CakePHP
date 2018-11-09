@@ -23,7 +23,7 @@ use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 
-Router::extensions(['json', 'xml']);
+//Router::extensions(['json', 'xml']);
 
 /**
  * The default class to use for all routes
@@ -82,11 +82,23 @@ Router::extensions(['json', 'xml']);
 
 Router::defaultRouteClass(DashedRoute::class);
 
-   Router::scope('/', function (RouteBuilder $routes) {
-      //$routes->connect('locale',['controller'=>'Localizations','action'=>'index']);
-      $routes->connect('/',['controller'=>'Hotels','action'=>'index']);
-      $routes->fallbacks('DashedRoute');
-   });
+Router::prefix('api', function ($routes) {
+    $routes->extensions(['json', 'xml']);
+    $routes->resources('Pays');
+    $routes->resources('Users');
+    Router::connect('/api/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
+    $routes->fallbacks('InflectedRoute');
+});
+
+Router::scope('/', function (RouteBuilder $routes) {
+       
+       
+    $routes->connect('/',['controller'=>'Hotels','action'=>'index']);
+    
+    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    
+    $routes->fallbacks('DashedRoute');
+});
 
 /**
  * Load all plugin routes.  See the Plugin documentation on
