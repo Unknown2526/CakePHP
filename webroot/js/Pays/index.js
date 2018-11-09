@@ -14,7 +14,7 @@ function getPays() {
                                 '<a href="javascript:void(0);" class="glyphicon glyphicon-edit" onclick="editPays(' + value.pays_code + ')"></a>' +
                                 '<a href="javascript:void(0);" class="glyphicon glyphicon-trash" onclick="return confirm(\'Are you sure to delete data?\') ? paysAction(\'delete\', ' + value.pays_code + ') : false;"></a>' +
                                 '</td></tr>';
-                        paysTable.append('<tr><td>' + count + '</td><td>' + value.pays_nom + '</td><td>' + value.description + editDeleteButtons);
+                        paysTable.append('<tr><td>' + count + '</td><td>' + value.pays_nom + '</td><td>' + value.pays_devise + editDeleteButtons);
                         count++;
                     });
 
@@ -62,9 +62,9 @@ function paysAction(type, id) {
     }
     $.ajax({
         type: requestType,
-        headers: {
-            'X-CSRF-Token': $('[name="_csrfToken"]').val()
-        },
+        beforeSend: function (xhr) { // Add this line
+        xhr.setRequestHeader('X-CSRF-Token', '3c20dd14ae8b40562756c4cb270b0f077a964da282ffbf4afdfafee9ed7be4721c6c0da6209884ff271d73d56313821bd067de541ab2fe31c8f4793590067d6d');
+ },
         url: ajaxUrl,
         dataType: "json",
         contentType: "application/json; charset=utf-8",

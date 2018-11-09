@@ -4,7 +4,6 @@ $urlToRestApi = $this->Url->build('/api/pays', true);
 echo $this->Html->scriptBlock('var urlToRestApi = "' . $urlToRestApi . '";', ['block' => true]);
 echo $this->Html->script('Pays/index', ['block' => 'scriptBottom']);
 ?>
-
 <div class="container">
     <div class="row">
         <div class="panel panel-default pays-content">
@@ -68,7 +67,6 @@ echo $this->Html->script('Pays/index', ['block' => 'scriptBottom']);
                         <?php
                     endforeach;
                     ?>
-                    <tr><td colspan="5">No Country found......</td></tr>
                 </tbody>
             </table>
         </div>

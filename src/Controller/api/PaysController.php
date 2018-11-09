@@ -6,6 +6,10 @@ use App\Controller\Api\AppController;
 
 class PaysController extends AppController {
 
+    public function initialize() {
+        parent::initialize();
+    }
+    
     public $paginate = [
         'page' => 1,
         'limit' => 100,
@@ -20,9 +24,6 @@ class PaysController extends AppController {
     
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforefilter($event);
-        if($this->request->param('action') === 'add') {
-            $this->eventManager()->off($this->Csrf);
-        }
     }
 
 }
