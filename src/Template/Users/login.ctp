@@ -1,3 +1,6 @@
+<?php
+    $this->extend('/Layout/default');
+?>
 <h1>Login</h1>
 <?= $this->Form->create() ?>
 <?= $this->Form->control('email') ?>

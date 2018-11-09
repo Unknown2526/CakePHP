@@ -17,7 +17,7 @@ class HotelsController extends AppController
 
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['add', 'findHotels', 'autocompletedemo']);
+        $this->Auth->allow(['findHotels', 'autocompletedemo']);
     }
     
     /**
