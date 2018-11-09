@@ -90,6 +90,10 @@ Router::prefix('api', function ($routes) {
     $routes->fallbacks('InflectedRoute');
 });
 
+Router::prefix('Admin', function ($routes) {
+    $routes->fallbacks('InflectedRoute');
+});
+
 Router::scope('/', function (RouteBuilder $routes) {
        
        

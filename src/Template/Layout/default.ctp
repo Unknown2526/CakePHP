@@ -86,6 +86,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <li>
                         <?= $this->Html->link('À propos', ['controller' => 'APropos', 'action' => 'index']) ?>
                     </li>
+                    <li><?=
+                    $this->Html->link('Section Admin en PHP', [
+                            'prefix' => 'admin',
+                            'controller' => 'Hotels',
+                            'action' => 'index'
+                        ]);
+                        ?>
+                    </li>
 
                     <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
                     <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
