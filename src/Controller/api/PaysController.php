@@ -25,5 +25,15 @@ class PaysController extends AppController {
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforefilter($event);
     }
+    
+    public function isAuthorized($user) {
+        $role = $user['role_id'];
+        
+        if ($role == 'admin') {
+            return true;
+        }
+
+        return false;
+    }
 
 }

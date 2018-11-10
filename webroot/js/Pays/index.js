@@ -63,7 +63,7 @@ function paysAction(type, id) {
     $.ajax({
         type: requestType,
         beforeSend: function (xhr) { // Add this line
-        xhr.setRequestHeader('X-CSRF-Token', '3c20dd14ae8b40562756c4cb270b0f077a964da282ffbf4afdfafee9ed7be4721c6c0da6209884ff271d73d56313821bd067de541ab2fe31c8f4793590067d6d');
+        xhr.setRequestHeader('X-CSRF-Token', '<?=$this->request->params["_csrfToken"] ?>');
  },
         url: ajaxUrl,
         dataType: "json",
