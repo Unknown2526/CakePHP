@@ -54,6 +54,7 @@ function paysAction(type, id) {
         requestType = 'POST';
         paysData = convertFormToJSON($("#addForm").find('.form'));
     } else if (type == 'edit') {
+        ajaxUrl = ajaxUrl + "/" + pays_codeEdit.value;
         requestType = 'PUT';
         paysData = convertFormToJSON($("#editForm").find('.form'));
     } else {
@@ -62,9 +63,9 @@ function paysAction(type, id) {
     }
     $.ajax({
         type: requestType,
-        beforeSend: function (xhr) { // Add this line
-        xhr.setRequestHeader('X-CSRF-Token', '<?=$this->request->params["_csrfToken"] ?>');
- },
+        headers: {
+            'X-CSRF-Token': token
+        },
         url: ajaxUrl,
         dataType: "json",
         contentType: "application/json; charset=utf-8",
@@ -89,9 +90,9 @@ function editPays(id) {
         dataType: 'JSON',
         url: urlToRestApi+ "/" + id,
         success: function (data) {
-            $('#pays_codeEdit').val(data.pays_code);
-            $('#pays_nomEdit').val(data.pays_nom);
-            $('#pays_deviseEdit').val(data.pays_devise);
+            $('#pays_codeEdit').val(data.data.pays_code);
+            $('#pays_nomEdit').val(data.data.pays_nom);
+            $('#pays_deviseEdit').val(data.data.pays_devise);
             $('#editForm').slideDown();
         }
     });

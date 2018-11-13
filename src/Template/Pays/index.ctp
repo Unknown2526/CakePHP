@@ -1,6 +1,7 @@
 <?php
 $this->extend('/Layout/default');
 $urlToRestApi = $this->Url->build('/api/pays', true);
+echo $this->Html->scriptBlock('var token = '.json_encode($this->request->getParam('_csrfToken')).';', ['block' => true]);
 echo $this->Html->scriptBlock('var urlToRestApi = "' . $urlToRestApi . '";', ['block' => true]);
 echo $this->Html->script('Pays/index', ['block' => 'scriptBottom']);
 ?>
@@ -60,7 +61,7 @@ echo $this->Html->script('Pays/index', ['block' => 'scriptBottom']);
                             <td><?php echo $pay['pays_nom']; ?></td>
                             <td><?php echo $pay['pays_devise']; ?></td>
                             <td>
-                                <a href="javascript:void(0);" class="glyphicon glyphicon-edit" onclick="editCountry('<?php echo $pay['pays_code']; ?>')"></a>
+                                <a href="javascript:void(0);" class="glyphicon glyphicon-edit" onclick="editPays('<?php echo $pay['pays_code']; ?>')"></a>
                                 <a href="javascript:void(0);" class="glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete data?') ? paysAction('delete', '<?php echo $pay['pays_code']; ?>') : false;"></a>
                             </td>
                         </tr>
