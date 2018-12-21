@@ -23,6 +23,7 @@ class FilesController extends AppController
         $files = $this->paginate($this->Files);
 
         $this->set(compact('files'));
+        $this->set('_serialize', ['files']);
     }
 
     /**
@@ -39,6 +40,7 @@ class FilesController extends AppController
         ]);
 
         $this->set('file', $file);
+        $this->set('_serialize', ['file']);
     }
 
     /**
@@ -60,13 +62,13 @@ class FilesController extends AppController
         }*/
         
         $file = $this->Files->newEntity();
-        if ($this->request->is('post')) {
-            if (!empty($this->request->data['file_name']['name'])) {
-                $fileName = $this->request->data['file_name']['name'];
+        if ($this->request->is('post') or $this->request->is('ajax')) {
+            if (!empty($this->request->data['file']['name'])) {
+                $fileName = $this->request->data['file']['name'];
                 $uploadPath = 'Files/';
                 $uploadFile = $uploadPath . $fileName;
-                if (move_uploaded_file($this->request->data['file_name']['tmp_name'], 'img/' . $uploadFile)) {
-                    $file = $this->Files->patchEntity($file, $this->request->getData());
+                if (move_uploaded_file($this->request->data['file']['tmp_name'], 'img/' . $uploadFile)) {
+                    //$file = $this->Files->patchEntity($file, $this->request->getData());
                     $file->file_name = $fileName;
                     $file->file_path = $uploadPath;
                     if ($this->Files->save($file)) {
@@ -84,6 +86,7 @@ class FilesController extends AppController
           
         $hotels = $this->Files->Hotels->find('list', ['limit' => 200, 'keyField' => 'hotel_id', 'valueField' => 'hotel_nom']);
         $this->set(compact('file', 'hotels'));
+        $this->set('_serialize', ['file']);
     }
 
     /**

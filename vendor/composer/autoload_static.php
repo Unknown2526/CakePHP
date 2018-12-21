@@ -89,6 +89,7 @@ class ComposerStaticInitd9d1e181ad33cc6ee4853f287711d238
         'F' => 
         array (
             'FontLib\\' => 8,
+            'Firebase\\JWT\\' => 13,
         ),
         'D' => 
         array (
@@ -124,6 +125,7 @@ class ComposerStaticInitd9d1e181ad33cc6ee4853f287711d238
             'App\\Test\\' => 9,
             'App\\' => 4,
             'Ajgl\\Twig\\Extension\\' => 20,
+            'ADmad\\JwtAuth\\' => 14,
         ),
     );
 
@@ -254,6 +256,10 @@ class ComposerStaticInitd9d1e181ad33cc6ee4853f287711d238
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
         ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
         'Dompdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
@@ -345,6 +351,10 @@ class ComposerStaticInitd9d1e181ad33cc6ee4853f287711d238
         'Ajgl\\Twig\\Extension\\' => 
         array (
             0 => __DIR__ . '/..' . '/ajgl/breakpoint-twig-extension/src',
+        ),
+        'ADmad\\JwtAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/admad/cakephp-jwt-auth/src',
         ),
     );
 

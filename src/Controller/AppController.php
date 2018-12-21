@@ -84,6 +84,10 @@ class AppController extends Controller {
 
     //$this->loadComponent('Security');
 
+    public function beforeFilter(Event $event) {
+        $this->Auth->allow(['index', 'view', 'display', 'getByPay', 'getPays']);
+    }
+    
     public function isAuthorized($user) {
         // By default deny access.
         return false;

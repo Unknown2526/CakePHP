@@ -1,99 +1,210 @@
-function getPays() {
-    $.ajax({
-        type: 'GET',
-        url: urlToRestApi,
-        dataType: "json",
-        success:
-                function (pays) {
-                    var paysTable = $('#paysData');
-                    paysTable.empty();
-                    var count = 1;
-                    $.each(pays.data, function (key, value)
-                    {
-                        var editDeleteButtons = '</td><td>' +
-                                '<a href="javascript:void(0);" class="glyphicon glyphicon-edit" onclick="editPays(' + value.pays_code + ')"></a>' +
-                                '<a href="javascript:void(0);" class="glyphicon glyphicon-trash" onclick="return confirm(\'Are you sure to delete data?\') ? paysAction(\'delete\', ' + value.pays_code + ') : false;"></a>' +
-                                '</td></tr>';
-                        paysTable.append('<tr><td>' + count + '</td><td>' + value.pays_nom + '</td><td>' + value.pays_devise + editDeleteButtons);
-                        count++;
-                    });
-
-                }
+var onloadCallback = function() {
+    widgetId1 = grecaptcha.render('example1', {
+        'sitekey': '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+        'theme': 'light'
     });
-}
+};
 
-/* Function takes a jquery form
- and converts it to a JSON dictionary */
-function convertFormToJSON(form) {
-    var array = $(form).serializeArray();
-    var json = {};
 
-    $.each(array, function () {
-        json[this.name] = this.value || '';
-    });
+var app = angular.module('app', []);
 
-    return json;
-}
+app.controller('UsersController', function($scope, $http) {
 
-/*
- $('#paysAddForm').submit(function (e) {
- e.preventDefault();
- var data = convertFormToJSON($(this));
- alert(data);
- console.log(data);
- });
- */
+    $scope.login = function () {
 
-function paysAction(type, id) {
-    id = (typeof id == "undefined") ? '' : id;
-    var statusArr = {add: "added", edit: "updated", delete: "deleted"};
-    var requestType = '';
-    var paysData = '';
-    var ajaxUrl = urlToRestApi;
-    if (type == 'add') {
-        requestType = 'POST';
-        paysData = convertFormToJSON($("#addForm").find('.form'));
-    } else if (type == 'edit') {
-        ajaxUrl = ajaxUrl + "/" + pays_codeEdit.value;
-        requestType = 'PUT';
-        paysData = convertFormToJSON($("#editForm").find('.form'));
-    } else {
-        requestType = 'DELETE';
-        ajaxUrl = ajaxUrl + "/" + id;
+        if (grecaptcha.getResponse(widgetId1) == '') {
+            $scope.captcha_status = 'Please verify captha.';
+            return;
+        }
+
+        var req = {
+            method: 'POST',
+            url: 'api/users/token',
+            headers: {
+                'Accept': 'application/json', 'Content-Type': 'application/json', 'X-CSRF-Token': token
+            },
+            data: {email: $scope.username, password: $scope.password}
+        }
+        
+        $http(req)
+                .then(function (jsonData, status, headers, config) {
+                    // console.log(jsonData.data.token);
+                    localStorage.setItem('token', jsonData.data.data.token);
+                    localStorage.setItem('user_id', jsonData.data.data.user_id);
+                    $('#login').hide();
+                    $('#logout').show();
+                    alert('You have successfully logged in');
+                },
+                function(data, status, headers, config) {
+                    //console.log(data.response.result);
+                    alert('Error, cannot log in');
+                });
     }
-    $.ajax({
-        type: requestType,
-        headers: {
-            'X-CSRF-Token': token
-        },
-        url: ajaxUrl,
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(paysData),
-        success: function (msg) {
-            if (msg) {
-                alert('Pays data has been ' + statusArr[type] + ' successfully.');
-                getPays();
-                $('.form')[0].reset();
-                $('.formData').slideUp();
-            } else {
-                alert('Some problem occurred, please try again.');
-            }
+    
+    $scope.logout = function () {
+        localStorage.setItem('token', "no token");
+        $('#logout').hide();
+        $('#login').show();
+        alert("You have successfully logged out");
+    }
+    
+    $scope.changePassword = function () {
+        var req = {
+            method: 'PUT',
+            url: 'api/users/' + localStorage.getItem("user_id"),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            },
+            data: {'password': $scope.newPassword}
         }
-    });
-}
+        $http(req)
+                .then(function (response) {
+                    alert('You have successfully changed your password');
+                },
+                function(response) {
+                    //console.log(response);
+                    alert('Error, cannot update your password');
+                });
+    }
+});
 
-/*** à déboguer ... ***/
-function editPays(id) {
-    $.ajax({
-        type: 'GET',
-        dataType: 'JSON',
-        url: urlToRestApi+ "/" + id,
-        success: function (data) {
-            $('#pays_codeEdit').val(data.data.pays_code);
-            $('#pays_nomEdit').val(data.data.pays_nom);
-            $('#pays_deviseEdit').val(data.data.pays_devise);
-            $('#editForm').slideDown();
+app.controller('PaysController', ['$scope','PaysService',
+    
+    function ($scope, PaysService) {
+
+    $scope.addPays = function () {
+        if ($scope.pays !== null && $scope.pays.pays_nom) {
+            console.log($scope.pays.pays_nom);
+            PaysService.addPays($scope.pays.pays_nom, $scope.pays.pays_devise)
+              .then (function success(response){
+                  $scope.message = 'Country successfully added';
+                  $scope.errorMessage = '';
+                  $scope.getAllPays();
+              },
+              function error(response){
+                  $scope.errorMessage = 'Could not add country';
+                  $scope.message = '';
+            });
         }
-    });
-}
+    }
+    
+    $scope.getPays = function (pays_code) {
+        PaysService.getPays(pays_code)
+          .then(function success(response){
+              $scope.pays = response.data.data;
+              $scope.pays.pays_code = pays_code;
+              $scope.message='';
+              $scope.errorMessage = '';
+              //$scope.getAllPays();
+              $('#addCountry').hide();
+              $('#updateCountry').show();
+          },
+          function error (response ){
+              $scope.message = '';
+              if (response.status === 404){
+                  $scope.errorMessage = 'Country not found';
+              }
+              else {
+                  $scope.errorMessage = "Cannot get country";
+              }
+          });
+    }
+    
+    $scope.getAllPays = function () {
+        PaysService.getAllPays()
+          .then(function success(response){
+              $scope.pays = response.data.data;
+              $scope.message='';
+              $scope.errorMessage = '';
+          },
+          function error (response ){
+              $scope.message='';
+              $scope.errorMessage = 'Cannot get countries';
+          });
+    }
+
+    $scope.updatePays = function () {
+        PaysService.updatePays($scope.pays.pays_code, $scope.pays.pays_nom, $scope.pays.pays_devise)
+          .then(function success(response){
+              $scope.message = 'Country has been updated';
+              $scope.errorMessage = '';
+              $scope.getAllPays();
+              $('#addCountry').show();
+              $('#updateCountry').hide();
+          },
+          function error(response){
+              $scope.errorMessage = 'Cannot update country';
+              $scope.message = '';
+          });
+    }
+    
+    $scope.deletePays = function (pays_code) {
+        PaysService.deletePays(pays_code)
+          .then (function success(response){
+              $scope.message = 'Country has been deleted';
+              $scope.pays = null;
+              $scope.errorMessage='';
+              $scope.getAllPays();
+          },
+          function error(response){
+              $scope.errorMessage = 'Cannot delete country';
+              $scope.message='';
+          });
+    }
+    
+    $scope.getAllPays();
+}]);
+
+app.service('PaysService',['$http', function ($http) {
+
+    this.addPays = function addPays(pays_nom, pays_devise){
+        return $http({
+          method: 'POST',
+          url: 'api/pays',
+          data: {pays_nom:pays_nom, pays_devise:pays_devise},
+          headers: { 'X-Requested-With' : 'XMLHttpRequest', 'Accept' : 'application/json', 'X-CSRF-Token': token}
+        });
+    }
+
+    this.getPays = function getPays(pays_code){
+        return $http({
+          method: 'GET',
+          url: 'api/pays/'+ pays_code,
+          headers: { 'X-Requested-With' : 'XMLHttpRequest', 'Accept' : 'application/json', 'X-CSRF-Token': token}
+        });
+    }
+
+    this.getAllPays = function getAllPays(){
+        return $http({
+          method: 'GET',
+          url: 'api/pays',
+          headers: { 'X-Requested-With' : 'XMLHttpRequest', 'Accept' : 'application/json', 'X-CSRF-Token': token}
+        });
+    }
+
+    this.deletePays = function deletePays(pays_code){
+        return $http({
+          method: 'DELETE',
+          url: 'api/pays/' + pays_code,
+          headers: { 'X-Requested-With' : 'XMLHttpRequest', 'Accept' : 'application/json', 'X-CSRF-Token': token}
+        });
+    }
+
+    this.updatePays = function updatePays(pays_code, pays_nom, pays_devise){
+        return $http({
+          method: 'PATCH',
+          url: 'api/pays/' + pays_code,
+          data: {pays_nom:pays_nom, pays_devise:pays_devise},
+          headers: { 'X-Requested-With' : 'XMLHttpRequest', 'Accept' : 'application/json', 'X-CSRF-Token': token}
+        });
+    }
+
+}]);
+
+$(document).ready(function() {
+    localStorage.setItem('token', "no token");
+    $('#logout').hide();
+    $('#updateCountry').hide();
+});

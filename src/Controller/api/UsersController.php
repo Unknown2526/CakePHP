@@ -40,12 +40,11 @@ class UsersController extends AppController {
             'success' => true,
             'data' => [
                 'token' => JWT::encode([
-                    'sub' => $user['id'],
+                    'sub' => $user['user_id'],
                     'exp' => time() + 604800
                         ], Security::salt())
             ],
             '_serialize' => ['success', 'data']
         ]);
     }
-
 }

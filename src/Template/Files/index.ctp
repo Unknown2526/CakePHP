@@ -4,6 +4,14 @@
  * @var \App\Model\Entity\File[]|\Cake\Collection\CollectionInterface $files
  */
 $this->extend('/Layout/default');
+$urlRedirectToIndex = $this->Url->build([
+    "controller" => "Files",
+    "action" => "index"
+        ]);
+echo $this->Html->scriptBlock('var urlRedirectToIndex = "' . $urlRedirectToIndex . '";', ['block' => true]);
+echo $this->Html->css('dropzone/dropzone.min');
+echo $this->Html->script('dropzone/dropzone', ['block' => 'scriptLibraries']);
+echo $this->Html->script('dropzone/RedirectToIndex', ['block' => 'scriptBottom']);
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -15,12 +23,26 @@ $this->extend('/Layout/default');
 </nav>
 <div class="files index large-9 medium-8 columns content">
     <h3><?= __('Files') ?></h3>
+    <?php
+    echo $this->Form->create('image', [
+        'url' => ['controller' => 'Files',
+            'action' => 'add'
+        ],
+        'method' => 'post',
+        'id' => 'my-awesome-dropzone',
+        'class' => 'dropzone',
+        'type' => 'file',
+        'autocomplete' => 'off'
+    ]);
+    ?>
+    <div class="image_upload_div">
+        <div class="dz-message" data-dz-message><h5>(<?= __('Drop files here to upload') ?>)</h5></div>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('file_name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('file_path') ?></th>
+                <th scope="col"><?= __('Preview') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('status') ?></th>
@@ -32,7 +54,18 @@ $this->extend('/Layout/default');
             <tr>
                 <td><?= $this->Number->format($file->id) ?></td>
                 <td><?= h($file->file_name) ?></td>
-                <td><?= h($file->file_path) ?></td>
+                <!--<td><-?= h($file->file_path) ?></td-->
+                <td>
+                    <?php
+                    echo $this->Html->image($file->file_path . $file->file_name, [
+                        "alt" => $file->file_name,
+                        "width" => "220px",
+                        "height" => "150px",
+                        'url' => ['action' => 'view', $file->id]
+                    ]);
+                    ?>
+
+                </td>
                 <td><?= h($file->created) ?></td>
                 <td><?= h($file->modified) ?></td>
                 <td><?= h($file->status) ?></td>
@@ -45,6 +78,8 @@ $this->extend('/Layout/default');
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
+    <?= $this->Form->end() ?>
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>

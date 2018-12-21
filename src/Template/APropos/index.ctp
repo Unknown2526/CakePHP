@@ -66,6 +66,30 @@ $this->extend('/Layout/default');
         <?= __('Username: admin@gmail.com<br>Password: admin<br>Seulement l\'administrateur qui peut créer les propriétaires.<br>') ?>
 </div>
 
+<div class="apropos index large-9 medium-8 columns content">
+    <h4><?= __('Description pour le TP3') ?></h4>
+        <h6><?= __('Démarrage de session et du changement de mot de passe') ?></h6>
+        <?= __('Vous devez vous connecter en tant qu\'administrateur pour pouvoir accéder à la page de pays (localhost/CakeHotel/pays), ensuite cliquer sur "List Pays". Il a les champs pour entrer le email et le mot de passe.<br><br>') ?>
+        
+        <h6><?= __('CAPTCHA') ?></h6>
+        <?= __('Le CAPTCHA se retrouve dans la page de pays. Vous devez faire la vérification au CAPTCHA avant de cliquer sur le bouton login.<br><br>') ?>
+        
+        <h6><?= __('Listes liées avec ANGULAR JS') ?></h6>
+        <?= __('Vous devez vous connecter en tant qu\'administrateur ou propriétaire, ensuite cliquer sur "New Hotel". La liste liée est dans le champ du pays avec la ville.<br><br>') ?>
+        
+        <h6><?= __('Dropzone') ?></h6>
+        <?= __('Vous devez vous connecter en tant qu\'administrateur, ensuite cliquer sur "List Files". Ensuite vous pouvez glisser la photo vers le (Drop files here to upload) et l\'image va se rajouter.<br><br>') ?>
+        
+        <h6><?= __('Stratégie d\'objectifs') ?></h6>
+        <?= __('Ce site web permet aux propriétaires des hotels de mettre leur hotel en ligne. Et il permet aux gens de faire une réservation à un hôtel.<br><br>') ?>
+        
+        <h6><?= __('Stratégie de cible') ?></h6>
+        <?= __('Les clients ciblés sont les personnes qui veulent faire une réservation à un hôtel. Les personnes qui aiment voyager sont les clients ciblés.<br><br>') ?>
+        
+        <h6><?= __('Compte admin') ?></h6>
+        <?= __('Username: admin@gmail.com<br>Password: admin<br>Seulement l\'administrateur qui peut créer les propriétaires.<br>') ?>
+</div>
+
 <?php 
     echo $this->Html->image("/img/Files/HotelReservation2.png", [
          "alt" => "diagramme"

@@ -118,4 +118,17 @@ class PaysController extends AppController
 
         return false;
     }
+    
+    public function getPays() {
+        $this->autoRender = false; // avoid to render view
+
+        $pays = $this->Pays->find('all', [
+            'contain' => ['Villes'],
+        ]);
+
+        $paysJ = json_encode($pays);
+        $this->response->type('json');
+        $this->response->body($paysJ);
+
+    }
 }

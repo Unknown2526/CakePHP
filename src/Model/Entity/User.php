@@ -31,6 +31,7 @@ class User extends Entity
     protected $_accessible = [
         'email' => true,
         'password' => true,
+        'active' => true,
         'role_id' => true,
         'created' => true,
         'modified' => true,
